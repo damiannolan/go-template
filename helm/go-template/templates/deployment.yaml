@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "go-template.fullname" . }}
+  labels:
+    app: {{ template "go-template.name" . }}
+    chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector: 
+    matchLabels:
+      app: {{ template "go-template.name" . }}
+  template:
+    metadata:
+{{- with .Values.deployment.annotations }}
+      annotations:
+{{ toYaml . | indent 8 }}
+{{- end }}
+      labels:
+        app: {{ template "go-template.name" . }}
+        release: {{ .Release.Name }}
+    spec: 
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.service.internalPort }}
+          volumeMounts:
+          - name: app-config
+            mountPath: /opt/service/config
+          resources:
+{{ toYaml .Values.resources | indent 12 }}
+{{- if .Values.nodeSelector }}
+      nodeSelector:
+{{ toYaml .Values.nodeSelector | indent 8 }}
+{{- end }}
+{{- if .Values.image.pullSecrets }}
+      imagePullSecrets:
+{{- range $pullSecret := .Values.image.pullSecrets }}
+        - name: {{ $pullSecret | quote }}
+{{- end }}
+{{- end }}
+      serviceAccountName: {{ include "go-template.fullname" . }}
+      restartPolicy: Always
+      volumes:
+      - name: app-config
+        configMap:
+          name: go-template-config

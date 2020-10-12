@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: go-template-config
+  labels:
+    k8s-app: {{ template "go-template.fullname" . }}
+    kubernetes.io/cluster-service: 'true'
+data:
+  application.yaml: |-
+    server:
+      host: {{ template "go-template.fullname" . }}
+      port: {{ .Values.service.internalPort }}
+    logging:
+      level: debug
+      format: text

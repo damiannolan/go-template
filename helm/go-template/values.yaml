@@ -1,0 +1,33 @@
+replicaCount: 1
+
+fullnameOverride: go-template
+
+image:
+  repository: docker.io/damiannolan/go-template
+  tag: 0.0.1
+  pullPolicy: Always
+  pullSecrets:
+    - []
+
+deployment:
+  annotations:
+    sidecar.istio.io/inject: "true"
+
+service:
+  type: ClusterIP
+  portName: http-web
+  internalPort: 8080
+  
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: istio
+  gateway:
+    name: default-ingressgateway
+  path: /go-template/api/v1
+
+resources:
+  requests:
+    memory: 128Mi
+  limits:
+    memory: 256Mi
