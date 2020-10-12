@@ -51,7 +51,7 @@ Save the file in the current directory and open a terminal window. Run the follo
 go run hello.go
 ```
 
-![hello-output](https://i.gyazo.com/ca72a80822fa01b525053d8bdfc2b0f2.png)
+![hello-output](https://prnt.sc/uy2o6l)
 
 You're now ready to start coding in Go!
 
