@@ -1,0 +1,7 @@
+server:
+  context-path: /go-template/api/v1
+  host: go-template
+  port: 8080
+logging:
+  level: debug
+  format: text
