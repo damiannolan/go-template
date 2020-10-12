@@ -39,7 +39,7 @@ package main
 import "fmt"
  
 func main() {
-    fmt.Printf("hello world")
+    fmt.Printf("hello, world")
 }
 ```
 
@@ -49,9 +49,8 @@ Save the file in the current directory and open a terminal window. Run the follo
 
 ```bash
 go run hello.go
+hello, world
 ```
-
-![hello-output](https://prnt.sc/uy2o6l)
 
 You're now ready to start coding in Go!
 
