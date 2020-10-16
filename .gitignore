@@ -16,3 +16,9 @@ vendor/
 
 # System Files
 .DS_STORE
+Thumbs.db
+
+# ctags
+tags
+tags.lock
+tags.temp
