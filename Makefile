@@ -26,6 +26,9 @@ helm-deploy-dev:
 test:
 	go test ./... -coverprofile=coverage.out && go tool cover -func=coverage.out
 
+commit:
+	git cz
+
 .PHONY: \
 		docker-build \
 		docker-push \
