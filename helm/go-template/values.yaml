@@ -3,7 +3,7 @@ replicaCount: 1
 fullnameOverride: go-template
 
 image:
-  repository: docker.io/damiannolan/go-template
+  repository: docker.io/patnolanireland/go-template
   tag: 0.0.1
   pullPolicy: Always
   pullSecrets:

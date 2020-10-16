@@ -1,7 +1,7 @@
 VERSION := 0.0.1-SNAPSHOT
 
 APP = go-template
-DOCKER_REG = docker.io/damiannolan
+DOCKER_REG = docker.io/patnolanireland
 TAG = $(VERSION)
 USER = $(shell whoami)
 

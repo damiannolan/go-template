@@ -1,4 +1,4 @@
-module github.com/damiannolan/go-template
+module github.com/patnolanireland/go-template
 
 go 1.13
 

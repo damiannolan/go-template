@@ -81,7 +81,7 @@ export GOPRIVATE=example.mycompany.com
 For example:
 
 ```bash
-go mod init github.com/damiannolan/go-template
+go mod init github.com/patnolanireland/go-template
 ```
 
 2. Downloading a dependency can be done through the use of the `go get` command. 
